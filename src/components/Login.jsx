@@ -1,43 +1,63 @@
 import React, { useEffect } from "react";
-import { app } from '../config/firebase.config'
+import { app } from "../config/firebase.config";
 import { FcGoogle } from "react-icons/fc";
-import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useStateValue } from "../context/StateProvider";
+import { validateUser } from "../api";
+import { actionType } from "../context/reducer";
+import { LoginBg } from "../assets/video";
 
-const Login = ({setAuth}) => {
+const Login = ({ setAuth }) => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
+  const [{ user }, dispatch] = useStateValue();
+
   const loginWithGoogle = async () => {
     await signInWithPopup(firebaseAuth, provider).then((userCred) => {
-      if(userCred){
+      if (userCred) {
         setAuth(true);
         window.localStorage.setItem("auth", "true");
-        firebaseAuth.onAuthStateChanged((userCred)=>{
-          if(userCred){
-            userCred.getIdToken().then((token)=>{
-            console.log(token);
-            })
-            navigate("/", {replace : true})
-          }else{
+        firebaseAuth.onAuthStateChanged((userCred) => {
+          if (userCred) {
+            userCred.getIdToken().then((token) => {
+              validateUser(token).then((data) => {
+                dispatch({
+                  type: actionType.SET_USER,
+                  user: data,
+                });
+              });
+            });
+            navigate("/", { replace: true });
+          } else {
             setAuth(false);
-            navigate("/login")
+            dispatch({
+              type: actionType.SET_USER,
+              user: null,
+            });
+            navigate("/login");
           }
-        })
+        });
       }
-    })
-  }
+    });
+  };
 
-  useEffect(()=>{
-    if(window.localStorage.getItem("auth") === "true"){
-      navigate("/", {replace: true})
+  useEffect(() => {
+    if (window.localStorage.getItem("auth") === "true") {
+      navigate("/", { replace: true });
     }
-  }, [])
+  }, []);
 
   return (
     <div className="relative w-screen h-screen">
+      <img
+        src={LoginBg}
+        type="img/png"
+        className="w-full h-full object-cover"
+      ></img>
       <div className="absolute inset-0 bg-darkOverlay flex items-center justify-center p-4">
         <div
           className="w-full md:w-375 p-4 bg-lightOverlay shadow-2xl rounded-md backdrop-blur-md 
