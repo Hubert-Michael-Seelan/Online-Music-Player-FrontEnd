@@ -30,7 +30,7 @@ const DashboardHome = () => {
       getAllUsers().then((data) => {
         dispatch({
           type: actionType.SET_ALL_USERS,
-          allUsers: data,
+          allUsers: data.data,
         });
       });
     }
@@ -39,20 +39,20 @@ const DashboardHome = () => {
       getAllSongs().then((data) => {
         dispatch({
           type: actionType.SET_ALL_SONGS,
-          allSongs: data,
+          allSongs: data.data,
         });
       });
     }
 
     if (!allArtists) {
       getAllArtist().then((data) => {
-        dispatch({ type: actionType.SET_ALL_ARTISTS, allArtists: data });
+        dispatch({ type: actionType.SET_ALL_ARTISTS, allArtists: data.data });
       });
     }
 
     if (!allAlbums) {
       getAllAlbums().then((data) => {
-        dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data });
+        dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
       });
     }
   }, []);
