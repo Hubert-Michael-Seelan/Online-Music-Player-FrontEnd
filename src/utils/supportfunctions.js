@@ -1,5 +1,5 @@
-// import { deleteObject, ref } from "firebase/storage";
-// import { storage } from "../config/firebase.config";
+import { deleteObject, ref } from "firebase/storage";
+import { storage } from "../config/firebase.config";
 
 export const filters = [
   { id: 2, name: "Jasp", value: "jasp" },
@@ -16,13 +16,13 @@ export const filterByLanguage = [
   { id: 5, name: "Hindi", value: "hindi" },
 ];
 
-// export const deleteAnObject = (referenceUrl) => {
-//   const deleteRef = ref(storage, referenceUrl);
-//   deleteObject(deleteRef)
-//     .then(() => {
-//       return true;
-//     })
-//     .catch((error) => {
-//       return false;
-//     });
-// };
+export const deleteAnObject = (referenceUrl) => {
+  const deleteRef = ref(storage, referenceUrl);
+  deleteObject(deleteRef)
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      return false;
+    });
+};
