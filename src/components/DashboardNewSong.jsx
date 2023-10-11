@@ -380,7 +380,7 @@ export const AddNewArtist = () => {
   const [twitter, setTwitter] = useState("");
   const [instagram, setInstagram] = useState("");
 
-  const [{ artists }, dispatch] = useStateValue();
+  const [{ allArtists }, dispatch] = useStateValue();
 
   const deleteImageObject = (songURL) => {
     setIsArtist(true);
@@ -413,7 +413,7 @@ export const AddNewArtist = () => {
       };
       saveNewArtist(data).then((res) => {
         getAllArtist().then((artistData) => {
-          dispatch({ type: actionType.SET_ARTISTS, artists: artistData.data });
+          dispatch({ type: actionType.SET_ALL_ARTISTS, allArtists: artistData.data });
         });
       });
       setIsArtist(false);

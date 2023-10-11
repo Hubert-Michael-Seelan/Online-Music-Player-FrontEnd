@@ -11,3 +11,6 @@ export {default as DashboardUsers} from "./DashboardUsers";
 export {default as DashboardArtist} from "./DashboardArtist";
 export {default as DashboardAlbum} from "./DashboardAlbum";
 export {default as FilterButtons} from "./FilterButtons";
+
+export { default as AlertSuccess } from "./AlertSuccess";
+export { default as AlertError } from "./AlertError";
