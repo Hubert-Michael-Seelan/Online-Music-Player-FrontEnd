@@ -24,7 +24,6 @@ import {
 } from "../api";
 import { actionType } from "../context/reducer";
 import { filterByLanguage, filters } from "../utils/supportfunctions";
-import { IoMusicalNote } from "react-icons/io5";
 import AlertSuccess from "./AlertSuccess";
 import AlertError from "./AlertError";
 
@@ -534,7 +533,7 @@ export const AddNewAlbum = () => {
 
   const [artistName, setArtistName] = useState("");
 
-  const [{ artists }, dispatch] = useStateValue();
+  const [{ allArtists }, dispatch] = useStateValue();
 
   const deleteImageObject = (songURL) => {
     setIsArtist(true);
@@ -566,7 +565,7 @@ export const AddNewAlbum = () => {
       saveNewAlbum(data).then((res) => {
         getAllAlbums().then((albumData) => {
           dispatch({
-            type: actionType.SET_ALL_ALBUMNS,
+            type: actionType.SET_ALL_ALBUMS,
             albumData: albumData.data,
           });
         });
@@ -617,7 +616,7 @@ export const AddNewAlbum = () => {
       <div className="flex flex-col items-center justify-center gap-4 ">
         <input
           type="text"
-          placeholder="Artist Name"
+          placeholder="Album Name"
           className="w-full lg:w-300 p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-gray-300 bg-transparent"
           value={artistName}
           onChange={(e) => setArtistName(e.target.value)}

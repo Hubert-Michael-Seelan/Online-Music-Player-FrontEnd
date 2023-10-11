@@ -5,10 +5,10 @@ export const actionType = {
   SET_ALL_SONGS: "SET_ALL_SONGS",
   SET_ALL_ALBUMS: "SET_ALL_ALBUMS",
   SET_ALBUM_FILTER: "SET_ALBUM_FILTER",
-  // SET_SONG: "SET_SONG",
+  SET_SONG: "SET_SONG",
   SET_ARTIST_FILTER: "SET_ARTIST_FILTER",
   SET_LANGUAGE_FILTER: "SET_LANGUAGE_FILTER",
-  // SET_SONG_PLAYING: "SET_SONG_PLAYING",
+  SET_SONG_PLAYING: "SET_SONG_PLAYING",
   // SET_MINI_PLAYER: "SET_MINI_PLAYER",
   // SET_SEARCH_TERM: "SET_SEARCH_TERM",
   SET_FILTER_TERM: "SET_FILTER_TERM",
@@ -78,17 +78,17 @@ const reducer = (state, action) => {
         filterTerm: action.filterTerm,
       };
 
-    // case actionType.SET_SONG:
-    //   return {
-    //     ...state,
-    //     song: action.song,
-    //   };
+    case actionType.SET_SONG:
+      return {
+        ...state,
+        song: action.song,
+      };
 
-    // case actionType.SET_SONG_PLAYING:
-    //   return {
-    //     ...state,
-    //     isSongPlaying: action.isSongPlaying,
-    //   };
+    case actionType.SET_SONG_PLAYING:
+      return {
+        ...state,
+        isSongPlaying: action.isSongPlaying,
+      };
 
     // case actionType.SET_MINI_PLAYER:
     //   return {
