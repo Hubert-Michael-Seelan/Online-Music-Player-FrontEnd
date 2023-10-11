@@ -90,11 +90,11 @@ const reducer = (state, action) => {
         isSongPlaying: action.isSongPlaying,
       };
 
-    // case actionType.SET_MINI_PLAYER:
-    //   return {
-    //     ...state,
-    //     miniPlayer: action.miniPlayer,
-    //   };
+    case actionType.SET_MINI_PLAYER:
+      return {
+        ...state,
+        miniPlayer: action.miniPlayer,
+      };
 
     default:
       return state;

@@ -1,6 +1,6 @@
 export const initialState = {
   user: null,
-  // searchTerm: "",
+  searchTerm: "",
   filterTerm: "all",
   allArtists: null,
   artistFilter: null,
@@ -11,5 +11,5 @@ export const initialState = {
   albumFilter: null,
   song: 0,
   isSongPlaying: false,
-  // miniPlayer: false,
+  miniPlayer: false,
 };
