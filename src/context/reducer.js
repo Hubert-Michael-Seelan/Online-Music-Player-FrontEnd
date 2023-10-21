@@ -9,8 +9,6 @@ export const actionType = {
   SET_ARTIST_FILTER: "SET_ARTIST_FILTER",
   SET_LANGUAGE_FILTER: "SET_LANGUAGE_FILTER",
   SET_SONG_PLAYING: "SET_SONG_PLAYING",
-  // SET_MINI_PLAYER: "SET_MINI_PLAYER",
-  // SET_SEARCH_TERM: "SET_SEARCH_TERM",
   SET_FILTER_TERM: "SET_FILTER_TERM",
 };
 
@@ -66,12 +64,6 @@ const reducer = (state, action) => {
         languageFilter: action.languageFilter,
       };
 
-    // case actionType.SET_SEARCH_TERM:
-    //   return {
-    //     ...state,
-    //     searchTerm: action.searchTerm,
-    //   };
-
     case actionType.SET_FILTER_TERM:
       return {
         ...state,
@@ -88,12 +80,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSongPlaying: action.isSongPlaying,
-      };
-
-    case actionType.SET_MINI_PLAYER:
-      return {
-        ...state,
-        miniPlayer: action.miniPlayer,
       };
 
     default:
