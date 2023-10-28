@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useStateValue } from "../context/StateProvider";
 import { IoMdClose } from "react-icons/io";
-import { IoArrowRedo, IoArrowUndo, IoMusicalNote } from "react-icons/io5";
+import { IoArrowRedo,  IoMusicalNote } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { actionType } from "../context/reducer";
-import { MdPlaylistPlay } from "react-icons/md";
 import { getAllSongs } from "../api";
 import { RiPlayListFill } from "react-icons/ri";
 
